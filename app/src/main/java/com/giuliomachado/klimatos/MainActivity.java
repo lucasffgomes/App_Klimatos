@@ -13,6 +13,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,46 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     String chaveAPImain = "850fa19c";
 
-    TextView tvTemp;
-    TextView tvCidade;
-    TextView tvDescri;
-    TextView tvUmidade;
-    TextView tvUpdate;
-    TextView tvVento;
-    TextView tvNascerDoSol;
-    TextView tvPorDoSol;
-    TextView tvHojeMAX;
-    TextView tvHojeMIN;
+    TextView tvTemp, tvCidade, tvDescri, tvUmidade, tvUpdate, tvVento, tvNascerDoSol, tvPorDoSol, tvHojeMAX, tvHojeMIN;
 
-    TextView tvDiaMais1;
-    TextView tvDateMais1;
-    TextView tvMaxMais1;
-    TextView tvMinMais1;
-    TextView tvDescMais1;
-
-    TextView tvDiaMais2;
-    TextView tvDateMais2;
-    TextView tvMaxMais2;
-    TextView tvMinMais2;
-    TextView tvDescMais2;
-
-    TextView tvDiaMais3;
-    TextView tvDateMais3;
-    TextView tvMaxMais3;
-    TextView tvMinMais3;
-    TextView tvDescMais3;
-
-    TextView tvDiaMais4;
-    TextView tvDateMais4;
-    TextView tvMaxMais4;
-    TextView tvMinMais4;
-    TextView tvDescMais4;
-
-    TextView tvDiaMais5;
-    TextView tvDateMais5;
-    TextView tvMaxMais5;
-    TextView tvMinMais5;
-    TextView tvDescMais5;
+    TextView tvDiaMais1, tvDateMais1, tvMaxMais1, tvMinMais1, tvDescMais1;
+    TextView tvDiaMais2, tvDateMais2, tvMaxMais2, tvMinMais2, tvDescMais2;
+    TextView tvDiaMais3, tvDateMais3, tvMaxMais3, tvMinMais3, tvDescMais3;
+    TextView tvDiaMais4, tvDateMais4, tvMaxMais4, tvMinMais4, tvDescMais4;
+    TextView tvDiaMais5, tvDateMais5, tvMaxMais5, tvMinMais5, tvDescMais5;
 
     @Override
     protected void onStart() {
@@ -81,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         if (!gpsEnabled) {
-            Toast.makeText(this, "GPS off", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "GPS desligado", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -148,82 +116,35 @@ public class MainActivity extends AppCompatActivity {
         tvMinMais5 = findViewById(R.id.textView_minMAIS5_main);
         tvDescMais5 = findViewById(R.id.textView_descricaoMAIS5_main);
 
-
         //Log.d("Retorno de JSON: ", resposta.toString());
 
         HTTPServiceMain service = new HTTPServiceMain("https://api.hgbrasil.com/weather?key=" + chaveAPImain + "&lat=" + tvLatitude + "&log=" + tvLongitude + "&user_ip=remote",
                 MainActivity.this,
-                img,
-                tvTemp,
-                tvCidade,
-                tvDescri,
-                tvUmidade,
-                tvUpdate,
-                tvVento,
-                tvNascerDoSol,
-                tvPorDoSol,
-                tvHojeMAX,
-                tvHojeMIN,
+                img, tvTemp, tvCidade, tvDescri, tvUmidade, tvUpdate, tvVento, tvNascerDoSol, tvPorDoSol, tvHojeMAX, tvHojeMIN,
+                /*-----------------------------------------------------------------------*/
+                tvDiaMais1, tvDateMais1, tvMaxMais1, tvMinMais1, tvDescMais1,
+                /*-----------------------------------------------------------------------*/
+                tvDiaMais2, tvDateMais2, tvMaxMais2, tvMinMais2, tvDescMais2,
+                /*-----------------------------------------------------------------------*/
+                tvDiaMais3, tvDateMais3, tvMaxMais3, tvMinMais3, tvDescMais3,
+                /*-----------------------------------------------------------------------*/
+                tvDiaMais4, tvDateMais4, tvMaxMais4, tvMinMais4, tvDescMais4,
+                /*-----------------------------------------------------------------------*/
+                tvDiaMais5, tvDateMais5, tvMaxMais5, tvMinMais5, tvDescMais5);
 
-                /*----------*/
-                tvDiaMais1,
-                tvDateMais1,
-                tvMaxMais1,
-                tvMinMais1,
-                tvDescMais1,
-                /*----------*/
-                tvDiaMais2,
-                tvDateMais2,
-                tvMaxMais2,
-                tvMinMais2,
-                tvDescMais2,
-                /*----------*/
-                tvDiaMais3,
-                tvDateMais3,
-                tvMaxMais3,
-                tvMinMais3,
-                tvDescMais3,
-                /*----------*/
-                tvDiaMais4,
-                tvDateMais4,
-                tvMaxMais4,
-                tvMinMais4,
-                tvDescMais4,
-                /*----------*/
-                tvDiaMais5,
-                tvDateMais5,
-                tvMaxMais5,
-                tvMinMais5,
-                tvDescMais5);
         service.execute();
-
 
         //--------------------------------------------------------------------------
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-//        LocationProvider provider = locationManager.getProvider(LocationManager.GPS_PROVIDER);
-
         Criteria criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setCostAllowed(false);
 
-        //String providerName = locationManager.getBestProvider(criteria, true);
-
-        /*
-        if (providerName != null) {
-            Toast.makeText(this, "Nao pegou provider", Toast.LENGTH_LONG).show();
-        }
-        */
-        Toast.makeText(this, "Atualizando localização", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Localizando", Toast.LENGTH_LONG).show();
         ListenerPosition();
-
-        //tvLatitude = findViewById(R.id.textView_temperatura_main);
-
-        /*if (gpsEnabled == true) {
-
-            ListenerPosition();
-        }*/
+        //Log.d("late", tvLatitude.toString());
     }
 
     public void ListenerPosition() {
@@ -231,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onLocationChanged(Location location) {
-                //Toast.makeText(MainActivityFinal.this, "LatLong" + location.getLatitude() + location.getLongitude(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "LatLong" + location.getLatitude() + location.getLongitude(), Toast.LENGTH_LONG).show();
                 exibirLocalizacao(location.getLatitude(), location.getLongitude());
             }
 
@@ -253,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exibirLocalizacao(double latitude, double longitude) {
-        //Toast.makeText(MainActivityFinal.this, "LatLong" + latitude, Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this, latitude + " " + longitude, Toast.LENGTH_LONG).show();
 
         //tvLatitude.setText(String.valueOf(latitude));
         //tvLongitude.setText(String.valueOf(longitude));

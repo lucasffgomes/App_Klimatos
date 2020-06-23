@@ -20,7 +20,6 @@ public class ActivityFavorite extends AppCompatActivity {
 
     String chaveAPI = "850fa19c";
 
-    //ImageView background = findViewById(R.id.backGround_dinamico_favorite);
     ImageView img;
 
     @Override
@@ -59,8 +58,6 @@ public class ActivityFavorite extends AppCompatActivity {
         final TextView tvHojeMAX = findViewById(R.id.textView_maxHoje_favorite);
         final TextView tvHojeMIN = findViewById(R.id.textView_minHoje_favorite);
 
-        //final ImageView tvPeriodo = findViewById(R.id.backGround_dinamico_favorite);
-
         final TextView tvDiaMais1 = findViewById(R.id.textView_diaMAIS1_favorite);
         final TextView tvDateMais1 = findViewById(R.id.textView_dataMAIS1_favorite);
         final TextView tvMaxMais1 = findViewById(R.id.textView_maxMAIS1_favorite);
@@ -94,55 +91,25 @@ public class ActivityFavorite extends AppCompatActivity {
 
         escreverCidade = findViewById(R.id.button_adicionar);
         escreverCidade.setOnClickListener(new Button.OnClickListener(){
+
             @Override
             public void onClick(View v) {
                 HTTPServiceFavorite service = new HTTPServiceFavorite("https://api.hgbrasil.com/weather?key=" + chaveAPI + "&city_name=" + etPrevisao.getText(),
                         ActivityFavorite.this,
                         img,
-                        tvResposta,
-                        tvCidade,
-                        tvDescri,
-                        tvUmidade,
-                        tvUpdate,
-                        tvVento,
-                        tvNascerDoSol,
-                        tvPorDoSol,
-                        tvHojeMAX,
-                        tvHojeMIN,
+                        tvResposta, tvCidade, tvDescri, tvUmidade, tvUpdate, tvVento, tvNascerDoSol, tvPorDoSol, tvHojeMAX, tvHojeMIN,
+                        /*-------------------------------------------------------------------*/
+                        tvDiaMais1, tvDateMais1, tvMaxMais1, tvMinMais1, tvDescMais1,
+                        /*-------------------------------------------------------------------*/
+                        tvDiaMais2, tvDateMais2, tvMaxMais2, tvMinMais2, tvDescMais2,
+                        /*-------------------------------------------------------------------*/
+                        tvDiaMais3, tvDateMais3, tvMaxMais3, tvMinMais3, tvDescMais3,
+                        /*-------------------------------------------------------------------*/
+                        tvDiaMais4, tvDateMais4, tvMaxMais4, tvMinMais4, tvDescMais4,
+                        /*-------------------------------------------------------------------*/
+                        tvDiaMais5, tvDateMais5, tvMaxMais5, tvMinMais5, tvDescMais5);
 
-                        //tvPeriodo,
-                        /*----------*/
-                        tvDiaMais1,
-                        tvDateMais1,
-                        tvMaxMais1,
-                        tvMinMais1,
-                        tvDescMais1,
-                        /*----------*/
-                        tvDiaMais2,
-                        tvDateMais2,
-                        tvMaxMais2,
-                        tvMinMais2,
-                        tvDescMais2,
-                        /*----------*/
-                        tvDiaMais3,
-                        tvDateMais3,
-                        tvMaxMais3,
-                        tvMinMais3,
-                        tvDescMais3,
-                        /*----------*/
-                        tvDiaMais4,
-                        tvDateMais4,
-                        tvMaxMais4,
-                        tvMinMais4,
-                        tvDescMais4,
-                        /*----------*/
-                        tvDiaMais5,
-                        tvDateMais5,
-                        tvMaxMais5,
-                        tvMinMais5,
-                        tvDescMais5);
                 service.execute();
-
                 apagarCampos();
                 esconderTeclado(v);
 
