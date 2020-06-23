@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     boolean gpsEnabled = false;
     Double tvLatitude;
     Double tvLongitude;
+    ImageView img;
 
     String chaveAPImain = "850fa19c";
 
@@ -106,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         tvTemp = findViewById(R.id.textView_temperatura_main);
         tvCidade = findViewById(R.id.textView_cidade_main);
-        tvDescri = findViewById(R.id.textView_condicao_main);
+        tvDescri = findViewById(R.id.textView12);
         tvUmidade = findViewById(R.id.textView_umidade_main);
         tvUpdate = findViewById(R.id.textView_ultimaAtualizacao_main);
         tvVento = findViewById(R.id.textView_velocidadeVento_main);
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         tvPorDoSol = findViewById(R.id.textView_sunset_main);
         tvHojeMAX = findViewById(R.id.textView_maxHoje_favorite);
         tvHojeMIN = findViewById(R.id.textView_minHoje_main);
+        img = findViewById(R.id.imageSlugMain);
 
         tvDiaMais1 = findViewById(R.id.textView_diaMAIS1_main);
         tvDateMais1 = findViewById(R.id.textView_dataMAIS1_main);
@@ -149,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("Retorno de JSON: ", resposta.toString());
 
         HTTPServiceMain service = new HTTPServiceMain("https://api.hgbrasil.com/weather?key=" + chaveAPImain + "&lat=" + tvLatitude + "&log=" + tvLongitude + "&user_ip=remote",
+                MainActivity.this,
+                img,
                 tvTemp,
                 tvCidade,
                 tvDescri,

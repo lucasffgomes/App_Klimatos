@@ -83,7 +83,6 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
                                TextView tvHojeMAX,
                                TextView tvHojeMIN,
 
-
                                //TextView tvPeriodo,
                        /*----------------------------------*/
                        TextView tvDiaMais1,
@@ -225,8 +224,6 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
 
             verificaIcone(periodo,  img, activityFavorite);
 
-            // public void verificaIcone(Resources res, ImageView imagem, Context contexto){
-
             //---------------------------------------------------------
 
             JSONArray arrayForecast = result.getJSONArray("forecast");
@@ -317,16 +314,18 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
         Resources res = activity.getApplicationContext().getResources();
         String caminho;
         if (periodo.equals("dia")) {
-            caminho = "t"+img+ "";
+            caminho = "t" + img + "";
             String pacote = activity.getApplicationContext().getPackageName();
             int i = res.getIdentifier(caminho,"drawable", pacote);
 
             ImageView imagem =  activity.findViewById(R.id.imageView5);
             imagem.setImageResource(i);
+
         } else {
-            caminho = "t"+img+ "n";
+
+            caminho = "t" + img;
             String pacote = activity.getPackageName();
-            int i = res.getIdentifier(caminho,"drawable",pacote );
+            int i = res.getIdentifier( caminho,"drawable", pacote );
 
             ImageView imagem =  activity.findViewById(R.id.imageView5);
             imagem.setImageResource(i);

@@ -1,8 +1,14 @@
 package com.giuliomachado.klimatos.api;
 
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.giuliomachado.klimatos.MainActivity;
+import com.giuliomachado.klimatos.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,6 +18,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
@@ -29,6 +36,8 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
     private TextView porDoSol;
     private TextView hojeMAX;
     private TextView hojeMIN;
+
+    private ImageView fundoAlterar;
 
     private TextView diaMais_1;
     private TextView dataMais_1;
@@ -60,7 +69,14 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
     private TextView minimaMais_5;
     private TextView descricaoMais_5;
 
+    private String periodo;
+    private String img;
+    private MainActivity mainActivity;
+
     public HTTPServiceMain(String URL,
+                           MainActivity backgroundBody,
+                           ImageView imagem,
+
                            TextView tvTemp,
                            TextView tvCidade,
                            TextView tvDesc,
@@ -112,6 +128,9 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
         porDoSol = tvPorDoSol;
         hojeMAX = tvHojeMAX;
         hojeMIN = tvHojeMIN;
+
+        mainActivity = backgroundBody;
+        fundoAlterar = imagem;
 
         diaMais_1 = tvDiaMais1;
         dataMais_1 = tvDateMais1;
@@ -202,6 +221,11 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
             String poenteSol = result.getString("sunset");
             porDoSol.setText(poenteSol);
 
+            periodo = result.getString("currently");
+            img = result.getString("img_id");
+
+            verficarIcone( periodo, img, mainActivity);
+
             JSONArray arrayForecast = result.getJSONArray("forecast");
 
             JSONObject listaItens0 = (JSONObject) arrayForecast.get(0);
@@ -280,6 +304,38 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
             descricaoMais_5.setText(description5);
 
         } catch (JSONException e) {
+        }
+    }
+
+    public void verficarIcone(String periodo, String img, MainActivity mainActivity){
+
+        Resources res = mainActivity.getApplicationContext().getResources();
+        String caminho;
+
+        if ( periodo.equals("dia") ){  //DIA
+
+            caminho = "t" + img + "";
+            String pacote = mainActivity.getApplicationContext().getPackageName();
+            int i = res.getIdentifier( caminho, "drawable", pacote );
+
+            ListView backGround = mainActivity.findViewById(R.id.bodyMain);
+            backGround.setBackgroundResource(R.color.colorAccent);
+
+            ImageView imagem = mainActivity.findViewById(R.id.imageSlugMain);
+            imagem.setImageResource(i);
+
+        } else {  //NOITE
+
+            caminho = "t" + img;
+            String pacote = mainActivity.getPackageName();
+            int i = res.getIdentifier( caminho, "drawable", pacote );
+
+            ListView backGround = mainActivity.findViewById(R.id.bodyMain);
+            backGround.setBackgroundResource(R.color.fundoNoite);
+
+            ImageView imagem = mainActivity.findViewById(R.id.imageSlugMain);
+            imagem.setImageResource(i);
+
         }
     }
 }

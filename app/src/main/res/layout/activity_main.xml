@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/botao_customizado"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,6 +73,7 @@
             android:layout_height="55dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:background="@drawable/botao_customizado"
             android:shadowColor="#FFFFFF"
             android:text="Cidades Favoritas"
             android:textColor="@color/colorPrimaryDark"
@@ -104,11 +105,25 @@
 
         </ListView>
 
+        <TextView
+            android:id="@+id/textView_umidade_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/ubuntu_italic"
+            android:hint="---"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_cidade_main" />
+
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="176dp"
-            android:layout_height="143dp"
-            android:layout_marginTop="24dp"
+            android:id="@+id/imageSlugMain"
+            android:layout_width="240dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -119,23 +134,26 @@
             android:id="@+id/textView_temperatura_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:fontFamily="@font/ubuntu_bold"
             android:hint="---"
             android:textColor="#FFFFFF"
-            android:textSize="60sp"
+            android:textSize="95sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageSlugMain"
+            app:layout_constraintEnd_toEndOf="@+id/imageSlugMain"
+            app:layout_constraintStart_toStartOf="@+id/imageSlugMain"
+            app:layout_constraintTop_toBottomOf="@+id/imageSlugMain" />
 
         <TextView
             android:id="@+id/textView_cidade_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/ubuntu_bold"
             android:hint="---"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_temperatura_main" />
@@ -144,30 +162,19 @@
             android:id="@+id/textView_condicao_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:hint="---"
+            android:fontFamily="@font/ubuntu_italic"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_cidade_main" />
-
-        <TextView
-            android:id="@+id/textView_umidade_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="---"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_condicao_main" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_umidade_main" />
 
         <TextView
             android:id="@+id/textView_ultimaAtualizacao_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/ubuntu_italic"
             android:hint="---"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
@@ -200,10 +207,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
+            android:fontFamily="@font/ubuntu_bold_italic"
             android:text="Previsão do dia"
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
-            android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/bodyMain_white" />
@@ -214,7 +221,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:drawableLeft="@drawable/ic_seta_cima_24dp"
-            android:hint="--"
+            android:fontFamily="@font/ubuntu_bold_italic"
+            android:hint="---"
             android:textSize="24sp"
             android:textStyle="italic"
             app:layout_constraintStart_toStartOf="@+id/guideline18"
@@ -224,7 +232,9 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sol e aumento de nuvens de manhã."
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="----"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView_minHoje_main"
             app:layout_constraintStart_toStartOf="@+id/guideline14"
             app:layout_constraintTop_toTopOf="@+id/textView_maxHoje_favorite" />
@@ -235,6 +245,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:drawableLeft="@drawable/ic_seta_baixo_24dp"
+            android:fontFamily="@font/ubuntu_bold_italic"
             android:hint="--"
             android:textSize="24sp"
             android:textStyle="italic"
@@ -323,7 +334,7 @@
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="50dp"
-            android:background="@color/blue2"
+            android:background="@drawable/botao_customizado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bodyMain_white">
@@ -401,7 +412,7 @@
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="24dp"
-            android:background="@color/blue2"
+            android:background="@drawable/botao_customizado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dia_1">
@@ -479,7 +490,7 @@
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="24dp"
-            android:background="@color/blue2"
+            android:background="@drawable/botao_customizado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dia_2">
@@ -557,7 +568,7 @@
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="24dp"
-            android:background="@color/blue2"
+            android:background="@drawable/botao_customizado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dia_3">
@@ -635,7 +646,7 @@
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="24dp"
-            android:background="@color/blue2"
+            android:background="@drawable/botao_customizado"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dia_4">
