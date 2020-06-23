@@ -3,6 +3,7 @@ package com.giuliomachado.klimatos.api;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.giuliomachado.klimatos.ActivityFavorite;
@@ -231,8 +232,8 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
             // FORECAST - posição 0 (DIA+0)
             JSONObject listaItens0 = (JSONObject) arrayForecast.get(0);
 
-            hojeMAX.setText(listaItens0.getString("max") + "º");
-            hojeMIN.setText(listaItens0.getString("min") + "º");
+            hojeMAX.setText(listaItens0.getString("max") + "º ");
+            hojeMIN.setText(listaItens0.getString("min") + "º ");
 
             // FORECAST - posição 1 (DIA+1)
             JSONObject listaItens1 = (JSONObject) arrayForecast.get(1);
@@ -242,9 +243,9 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
             String date1 = listaItens1.getString("date");
                 dataMais_1.setText(date1);
             int max1 = listaItens1.getInt("max");
-                maximaMais_1.setText(Integer.toString(max1) + "º");
+                maximaMais_1.setText(Integer.toString(max1) + "º ");
             int min1 = listaItens1.getInt("min");
-                minimaMais_1.setText(Integer.toString(min1) + "º");
+                minimaMais_1.setText(Integer.toString(min1) + "º ");
             String description1 = listaItens1.getString("description");
                 descricaoMais_1.setText(description1);
 
@@ -256,9 +257,9 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
             String date2 = listaItens2.getString("date");
                 dataMais_2.setText(date2);
             int max2 = listaItens2.getInt("max");
-                maximaMais_2.setText(Integer.toString(max2) + "º");
+                maximaMais_2.setText(Integer.toString(max2) + "º ");
             int min2 = listaItens2.getInt("min");
-                minimaMais_2.setText(Integer.toString(min2) + "º");
+                minimaMais_2.setText(Integer.toString(min2) + "º ");
             String description2 = listaItens2.getString("description");
                 descricaoMais_2.setText(description2);
 
@@ -270,9 +271,9 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
             String date3 = listaItens3.getString("date");
                 dataMais_3.setText(date3);
             int max3 = listaItens3.getInt("max");
-                maximaMais_3.setText(Integer.toString(max3) + "º");
+                maximaMais_3.setText(Integer.toString(max3) + "º ");
             int min3 = listaItens3.getInt("min");
-                minimaMais_3.setText(Integer.toString(min3) + "º");
+                minimaMais_3.setText(Integer.toString(min3) + "º ");
             String description3 = listaItens3.getString("description");
                 descricaoMais_3.setText(description3);
 
@@ -284,9 +285,9 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
             String date4 = listaItens4.getString("date");
                 dataMais_4.setText(date4);
             int max4 = listaItens4.getInt("max");
-                maximaMais_4.setText(Integer.toString(max4) + "º");
+                maximaMais_4.setText(Integer.toString(max4) + "º ");
             int min4 = listaItens4.getInt("min");
-                minimaMais_4.setText(Integer.toString(min4) + "º");
+                minimaMais_4.setText(Integer.toString(min4) + "º ");
             String description4 = listaItens4.getString("description");
                 descricaoMais_4.setText(description4);
 
@@ -298,9 +299,9 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
             String date5 = listaItens5.getString("date");
                 dataMais_5.setText(date5);
             int max5 = listaItens5.getInt("max");
-                maximaMais_5.setText(Integer.toString(max5) + "º");
+                maximaMais_5.setText(Integer.toString(max5) + "º ");
             int min5 = listaItens5.getInt("min");
-                minimaMais_5.setText(Integer.toString(min5) + "º");
+                minimaMais_5.setText(Integer.toString(min5) + "º ");
             String description5 = listaItens5.getString("description");
                 descricaoMais_5.setText(description5);
 
@@ -313,10 +314,15 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
 
         Resources res = activity.getApplicationContext().getResources();
         String caminho;
+
         if (periodo.equals("dia")) {
+
             caminho = "t" + img + "";
             String pacote = activity.getApplicationContext().getPackageName();
             int i = res.getIdentifier(caminho,"drawable", pacote);
+
+            ListView backGround = activity.findViewById(R.id.bodyFavorite);
+            backGround.setBackgroundResource(R.color.colorAccent);
 
             ImageView imagem =  activity.findViewById(R.id.imageView5);
             imagem.setImageResource(i);
@@ -326,6 +332,9 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
             caminho = "t" + img;
             String pacote = activity.getPackageName();
             int i = res.getIdentifier( caminho,"drawable", pacote );
+
+            ListView backGround = activity.findViewById(R.id.bodyFavorite);
+            backGround.setBackgroundResource(R.color.fundoNoite);
 
             ImageView imagem =  activity.findViewById(R.id.imageView5);
             imagem.setImageResource(i);

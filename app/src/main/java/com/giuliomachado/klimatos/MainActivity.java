@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Double tvLongitude;
     ImageView img;
 
-    String chaveAPImain = "850fa19c";
+    String chaveAPImain = "b127603d";
 
     TextView tvTemp, tvCidade, tvDescri, tvUmidade, tvUpdate, tvVento, tvNascerDoSol, tvPorDoSol, tvHojeMAX, tvHojeMIN;
 

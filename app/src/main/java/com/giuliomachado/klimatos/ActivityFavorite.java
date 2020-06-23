@@ -18,7 +18,7 @@ public class ActivityFavorite extends AppCompatActivity {
     Button escreverCidade;
     Button BOTAOretornarParaHome;
 
-    String chaveAPI = "850fa19c";
+    String chaveAPI = "b127603d";
 
     ImageView img;
 
@@ -49,7 +49,7 @@ public class ActivityFavorite extends AppCompatActivity {
         });
         final TextView tvResposta = findViewById(R.id.textView_temperatura_favorite);
         final TextView tvCidade = findViewById(R.id.textView_cidade_favorite);
-        final TextView tvDescri = findViewById(R.id.textView_condicao_favorite);
+        final TextView tvDescri = findViewById(R.id.textView13);
         final TextView tvUmidade = findViewById(R.id.textView_umidade_favorite);
         final TextView tvUpdate = findViewById(R.id.textView_ultimaAtualizacao_favorite);
         final TextView tvVento = findViewById(R.id.textView_velocidadeVento_favorite);
