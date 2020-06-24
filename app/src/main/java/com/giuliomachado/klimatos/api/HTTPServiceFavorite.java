@@ -72,49 +72,17 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
 
     public HTTPServiceFavorite(String URL,
                                ActivityFavorite activity,
-                               ImageView imagem,
-                               TextView tvResposta,
-                               TextView tvCidade,
-                               TextView tvDesc,
-                               TextView tvUmidade,
-                               TextView tvUpdate,
-                               TextView tvVento,
-                               TextView tvNascerDoSol,
-                               TextView tvPorDoSol,
-                               TextView tvHojeMAX,
-                               TextView tvHojeMIN,
-
-                               //TextView tvPeriodo,
-                       /*----------------------------------*/
-                       TextView tvDiaMais1,
-                               TextView tvDateMais1,
-                               TextView tvMaxMais1,
-                               TextView tvMinMais1,
-                               TextView tvDescMais1,
-                       /*----------------------------------*/
-                       TextView tvDiaMais2,
-                               TextView tvDateMais2,
-                               TextView tvMaxMais2,
-                               TextView tvMinMais2,
-                               TextView tvDescMais2,
-                       /*----------------------------------*/
-                       TextView tvDiaMais3,
-                               TextView tvDateMais3,
-                               TextView tvMaxMais3,
-                               TextView tvMinMais3,
-                               TextView tvDescMais3,
-                       /*----------------------------------*/
-                       TextView tvDiaMais4,
-                               TextView tvDateMais4,
-                               TextView tvMaxMais4,
-                               TextView tvMinMais4,
-                               TextView tvDescMais4,
-                       /*----------------------------------*/
-                       TextView tvDiaMais5,
-                               TextView tvDateMais5,
-                               TextView tvMaxMais5,
-                               TextView tvMinMais5,
-                               TextView tvDescMais5){
+                               ImageView imagem, TextView tvResposta, TextView tvCidade, TextView tvDesc, TextView tvUmidade, TextView tvUpdate, TextView tvVento, TextView tvNascerDoSol, TextView tvPorDoSol, TextView tvHojeMAX, TextView tvHojeMIN,
+                               /*----------------------------------*/
+                               TextView tvDiaMais1, TextView tvDateMais1, TextView tvMaxMais1, TextView tvMinMais1, TextView tvDescMais1,
+                               /*----------------------------------*/
+                               TextView tvDiaMais2, TextView tvDateMais2, TextView tvMaxMais2, TextView tvMinMais2, TextView tvDescMais2,
+                               /*----------------------------------*/
+                               TextView tvDiaMais3, TextView tvDateMais3, TextView tvMaxMais3, TextView tvMinMais3, TextView tvDescMais3,
+                               /*----------------------------------*/
+                               TextView tvDiaMais4, TextView tvDateMais4, TextView tvMaxMais4, TextView tvMinMais4, TextView tvDescMais4,
+                               /*----------------------------------*/
+                               TextView tvDiaMais5, TextView tvDateMais5, TextView tvMaxMais5, TextView tvMinMais5, TextView tvDescMais5){
 
         realtime = tvResposta;
         cidadeAdicionada = tvCidade;
@@ -128,7 +96,6 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
         hojeMIN = tvHojeMIN;
 
         activityFavorite = activity;
-
         fundoAlterar = imagem;
 
         diaMais_1 = tvDiaMais1;
@@ -163,7 +130,6 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
         activityFavorite = activity;
 
         city = URL;
-
     }
 
     @Override
@@ -221,7 +187,6 @@ public class HTTPServiceFavorite extends AsyncTask<Void, Void, String> {
 
             periodo = result.getString("currently");
             img = result.getString("img_id");
-            //    fundoAlterar.setText(periodo);
 
             verificaIcone(periodo,  img, activityFavorite);
 

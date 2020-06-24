@@ -18,7 +18,7 @@ public class ActivityFavorite extends AppCompatActivity {
     Button escreverCidade;
     Button BOTAOretornarParaHome;
 
-    String chaveAPI = "b127603d";
+    String chaveAPI = "7687cfb6";
 
     ImageView img;
 
@@ -112,27 +112,13 @@ public class ActivityFavorite extends AppCompatActivity {
                 service.execute();
                 apagarCampos();
                 esconderTeclado(v);
-
             }
 
             public void apagarCampos(){
                 etPrevisao.getText().clear();
             }
-
         });
     }
-
-    /*
-    public void verificaIcone(HTTPServiceFavorite servico){
-
-    String imagem = servico.verificaIcone();
-    ImageView img;
-    int numero = getResources().
-    img = findViewById(R.id.imageView5);
-
-    img.setImageResource(imagem);
-    }
-    */
 
     public void esconderTeclado(View v) {
         if(v!=null)

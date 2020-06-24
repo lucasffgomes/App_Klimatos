@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Double tvLongitude;
     ImageView img;
 
-    String chaveAPImain = "b127603d";
+    String chaveAPImain = "ac2da1c7";
 
     TextView tvTemp, tvCidade, tvDescri, tvUmidade, tvUpdate, tvVento, tvNascerDoSol, tvPorDoSol, tvHojeMAX, tvHojeMIN;
 
@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
         if (!gpsEnabled) {
-            Toast.makeText(this, "GPS desligado", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "GPS Desligado", Toast.LENGTH_LONG).show();
+            //enableLocationSettings();
         }
     }
 
@@ -144,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Localizando", Toast.LENGTH_LONG).show();
         ListenerPosition();
-        //Log.d("late", tvLatitude.toString());
     }
 
     public void ListenerPosition() {
@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void exibirLocalizacao(double latitude, double longitude) {
         //Toast.makeText(MainActivity.this, latitude + " " + longitude, Toast.LENGTH_LONG).show();
-
         //tvLatitude.setText(String.valueOf(latitude));
         //tvLongitude.setText(String.valueOf(longitude));
     }

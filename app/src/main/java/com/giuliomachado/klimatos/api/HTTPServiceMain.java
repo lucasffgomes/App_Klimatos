@@ -77,46 +77,17 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
                            MainActivity backgroundBody,
                            ImageView imagem,
 
-                           TextView tvTemp,
-                           TextView tvCidade,
-                           TextView tvDesc,
-                           TextView tvUmidade,
-                           TextView tvUpdate,
-                           TextView tvVento,
-                           TextView tvNascerDoSol,
-                           TextView tvPorDoSol,
-                           TextView tvHojeMAX,
-                           TextView tvHojeMIN,
-            /*----------------------------------*/
-                           TextView tvDiaMais1,
-                           TextView tvDateMais1,
-                           TextView tvMaxMais1,
-                           TextView tvMinMais1,
-                           TextView tvDescMais1,
-            /*----------------------------------*/
-                           TextView tvDiaMais2,
-                           TextView tvDateMais2,
-                           TextView tvMaxMais2,
-                           TextView tvMinMais2,
-                           TextView tvDescMais2,
-            /*----------------------------------*/
-                           TextView tvDiaMais3,
-                           TextView tvDateMais3,
-                           TextView tvMaxMais3,
-                           TextView tvMinMais3,
-                           TextView tvDescMais3,
-            /*----------------------------------*/
-                           TextView tvDiaMais4,
-                           TextView tvDateMais4,
-                           TextView tvMaxMais4,
-                           TextView tvMinMais4,
-                           TextView tvDescMais4,
-            /*----------------------------------*/
-                           TextView tvDiaMais5,
-                           TextView tvDateMais5,
-                           TextView tvMaxMais5,
-                           TextView tvMinMais5,
-                           TextView tvDescMais5){
+                           TextView tvTemp, TextView tvCidade, TextView tvDesc, TextView tvUmidade, TextView tvUpdate, TextView tvVento, TextView tvNascerDoSol, TextView tvPorDoSol, TextView tvHojeMAX, TextView tvHojeMIN,
+                           /*----------------------------------*/
+                           TextView tvDiaMais1, TextView tvDateMais1, TextView tvMaxMais1, TextView tvMinMais1, TextView tvDescMais1,
+                           /*----------------------------------*/
+                           TextView tvDiaMais2, TextView tvDateMais2, TextView tvMaxMais2, TextView tvMinMais2, TextView tvDescMais2,
+                           /*----------------------------------*/
+                           TextView tvDiaMais3, TextView tvDateMais3, TextView tvMaxMais3, TextView tvMinMais3, TextView tvDescMais3,
+                           /*----------------------------------*/
+                           TextView tvDiaMais4, TextView tvDateMais4, TextView tvMaxMais4, TextView tvMinMais4, TextView tvDescMais4,
+                           /*----------------------------------*/
+                           TextView tvDiaMais5, TextView tvDateMais5, TextView tvMaxMais5, TextView tvMinMais5, TextView tvDescMais5){
 
         realtime = tvTemp;
         cidade = tvCidade;
@@ -171,9 +142,8 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... voids) {
         StringBuilder respostaMain = new StringBuilder();
         try {
-            URL urlLatitude = new URL(latitude + longitude);
-            //URL urlLongitude = new URL(longitude);
-            HttpURLConnection connection = (HttpURLConnection) urlLatitude.openConnection();
+            URL urlCoordenadas = new URL(latitude + longitude);
+            HttpURLConnection connection = (HttpURLConnection) urlCoordenadas.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
@@ -181,7 +151,7 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
             connection.setConnectTimeout(5000);
             connection.connect();
 
-            Scanner scanner = new Scanner(urlLatitude.openStream());
+            Scanner scanner = new Scanner(urlCoordenadas.openStream());
             while (scanner.hasNext()) {
                 respostaMain.append(scanner.next() + " "); // PEGAR ESPAÇOS ENTRE PALAVRAS
             }
@@ -222,6 +192,8 @@ public class HTTPServiceMain extends AsyncTask<Void, Void, String> {
 
             periodo = result.getString("currently");
             img = result.getString("img_id");
+
+
 
             verficarIcone( periodo, img, mainActivity);
 
